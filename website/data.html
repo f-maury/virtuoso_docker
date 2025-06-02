@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Download the MaKaao knowledge graph dataset in CSV and RDF formats">
+  <meta name="author" content="Fabien Maury">
+  <title>MAKAAO – Data Downloads</title>
+
+  <!-- Google Font: Roboto -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+
+  <!-- Favicon -->
+  <link rel="icon" href="pictures/favicon.png" type="image/png">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    h1 {
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-white">
+    <img src="pictures/header.png" alt="MAKAAO header" class="img-fluid w-100 mb-3">
+    <div class="container">
+      <div id="button_bar" class="d-flex flex-wrap mb-3">
+        <a href="index.html"          class="btn btn-primary mr-2 mb-2">Home</a>
+        <a href="tree.html"           class="btn btn-primary mr-2 mb-2">Autoantibody Tree</a>
+        <a href="tools.html"          class="btn btn-primary mr-2 mb-2">Tools</a>
+        <a href="data.html"           class="btn btn-primary mr-2 mb-2">Data</a>
+        <a href="contact.html"        class="btn btn-primary mr-2 mb-2">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-4">
+    <h1>Data Downloads</h1>
+    <p class="mb-4">
+      Here you can download the dataset our curators colected from the literature. It contains informations about auto-antibodies, their targets, and related diseases. Relations are justified using references from external sources, as much as possible. You can also download the knowledge graph constructed from this dataset
+      Click the buttons below to get the files.
+    </p>
+    <div class="row mb-5">
+      <div class="col text-center">
+        <a href="data/new_aab.csv"                          class="btn btn-outline-primary mr-3">Download dataset (CSV)</a>
+        <a href="data/makaao_v1.rdf"           class="btn btn-outline-primary">Download knowledge graph (RDF)</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-light text-center py-4">
+    <img src="pictures/footer.png" alt="Partner logos" class="img-fluid w-100 mb-2">
+  </footer>
+
+  <!-- JS (deferred) -->
+  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+  <!-- GoatCounter analytics -->
+  <script data-goatcounter="https://traffic-monitor.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
+

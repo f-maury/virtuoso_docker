@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="List and classification of all autoimmune antibodies known in humans">
+  <meta name="author" content="Fabien Maury">
+  <meta name="google-site-verification" content="1BkABgzKZlXI0srYPxtJ5aK3MUbCLNOZLLcg68M-9Kk">
+  <title>MAKAAO – Index of Human Autoantibodies</title>
+
+  <!-- Google Font: Roboto -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
+
+  <link rel="icon" href="pictures/favicon.png" type="image/png">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    /* Original intro paragraphs */
+    #intro1, #intro2 {
+      font-family: sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-white">
+    <img src="pictures/header.png" alt="MAKAAO header" class="img-fluid w-100 mb-3">
+    <div class="container">
+      <div id="button_bar" class="d-flex flex-wrap mb-3">
+        <a href="https://makaao.inria.fr"               class="btn btn-primary mr-2 mb-2">Home</a>
+        <a href="https://makaao.inria.fr/tree.html"     class="btn btn-primary mr-2 mb-2">Autoantibody Tree</a>
+        <a href="https://makaao.inria.fr/tools.html"    class="btn btn-primary mr-2 mb-2">Tools</a>
+        <a href="https://makaao.inria.fr/data.html"     class="btn btn-primary mr-2 mb-2">Data</a>
+        <a href="https://makaao.inria.fr/contact.html"  class="btn btn-primary mr-2 mb-2">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-4">
+    <section class="mb-4">
+      <p id="intro1">
+        The table below displays all the
+        <a href="https://hpo.jax.org/app/browse/term/HP:0030057">autoimmune antibody positive</a>
+        phenotypes listed in the <a href="https://hpo.jax.org">HPO</a>. It is updated daily via the
+        <a href="https://ontology.jax.org/api/network/docs#/">HPO API</a>.
+      </p>
+      <p id="intro2">
+        Sort columns with the arrows, filter using the search box, or download the full table.
+      </p>
+    </section>
+
+    <div class="row justify-content-center mb-3">
+      <div id="search-container" class="col-12 col-md-6"></div>
+    </div>
+    <div class="row justify-content-center mb-3">
+      <div id="download-button" class="col-auto text-center"></div>
+    </div>
+    <div class="row justify-content-center mb-3">
+      <div id="info-container" class="col-12 col-md-6 text-center"></div>
+    </div>
+
+    <div class="table-responsive mb-5">
+      <div id="table-container"></div>
+    </div>
+
+    <section>
+      <p>
+        This index is part of a project by
+        <a href="https://www.institutimagine.org/en/users/maud-de-dieuleveult">Maud de Dieuleveult</a>
+        (Institut Imagine) and
+        <a href="https://members.loria.fr/ACoulet/">Adrien Coulet</a>
+        (Inria Paris, HeKA). Ongoing PhD by
+        <a href="https://www.institutimagine.org/en/user/5351">Fabien Maury</a>,
+        funded by FSMR BRAIN-TEAM &amp; Filnemus.
+      </p>
+      <p>This website is a work in progress and may change.</p>
+    </section>
+  </main>
+
+  <footer class="bg-light text-center py-4">
+    <img src="pictures/footer.png" alt="Partner logos" class="img-fluid w-100 mb-2">
+  </footer>
+
+  <!-- JS dependencies (deferred) -->
+  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
+  <script defer src="js/jquery.csv.min.js"></script>
+  <script defer src="js/csv_to_html_table.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      CsvToHtmlTable.init({
+        csv_path: 'data/new_aab.csv',
+        element: 'table-container',
+        allow_download: true,
+        download_button: 'download-button',
+        csv_options: { separator: ',', delimiter: '"' },
+        datatables_options: {
+          paging: false,
+          initComplete: function(settings) {
+            var wrapper = $('#' + settings.sTableId + '_wrapper');
+            var filter = wrapper.find('.dataTables_filter').detach();
+            $('#search-container').append(
+              filter.find('input').addClass('form-control').attr('placeholder', 'Search…')
+            );
+            var info = wrapper.find('.dataTables_info').detach();
+            $('#info-container').append(info);
+          }
+        },
+        custom_formatting: [
+          [0, format_link],
+          [3, syn_link],
+          [4, ref_link],
+          [5, disease_link],
+          [6, gene_link]
+        ]
+      });
+    });
+  </script>
+
+  <!-- GoatCounter analytics -->
+  <script data-goatcounter="https://traffic-monitor.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
