@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  virtuoso:
+    image: openlink/virtuoso-opensource-7:latest
+    container_name: virtuoso
+    restart: unless-stopped
+    ports:
+      - "8890:8890"
+      - "1111:1111"
+    environment:
+      - DBA_PASSWORD=m1DB44cc0unt#1;
+    volumes:
+      - ./database/data/:/opt/virtuoso-opensource/database/data/
+      - ./virtuoso.ini:/opt/virtuoso-opensource/database/virtuoso.ini:ro
+      - ./scripts/:/opt/virtuoso-opensource/initdb.d
+      #- ./vad/:/opt/virtuoso-opensource/vad/:ro
