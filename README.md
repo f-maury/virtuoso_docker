@@ -28,5 +28,6 @@
 5. Change password and save
    
 ## Data loading
-1. Go to: Conductor UI, and log in > "Linked Data" > "Quad Store Upload"
-2. Pick a local RDF file from your computer, and decide at which URI it will be available
+1. Go to: Conductor UI, log in
+2. Then, go to "Linked Data" > "Quad Store Upload"
+3. Pick a local RDF file from your computer, and decide at which URI it will be available
