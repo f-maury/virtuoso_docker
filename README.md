@@ -13,7 +13,7 @@
     sudo docker-compose up -d
     ```
 
-## Access:
+## Access
 - Conductor UI: `localhost:8890/conductor`
 - SPARQL UI: `localhost:8890/sparql`
 - isql console: `docker exec -it virtuoso isql 1111 dba $DBA_PASSWORD`
