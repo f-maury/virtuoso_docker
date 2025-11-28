@@ -1,5 +1,5 @@
 # Virtuoso Docker
-Files in this repository are directly from OpenLink Virtuoso open-source edition, which is under GPL license. There are gathered in this repository, unaltered, for the sake of convenience only, in order to offer an easy Docker Compose deployment.
+Files in this repository are from OpenLink Virtuoso open-source edition, which is under GPL license. They are gathered in this repository, unaltered, for the sake of convenience only, in order to offer an easy Docker Compose deployment.
 ## Installation
 1. ```bash
    git clone https://gitlab.com/Fabien-Maury/virtuoso_docker.git
